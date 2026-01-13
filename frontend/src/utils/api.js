@@ -1,25 +1,20 @@
 import axios from 'axios';
 
-// Auto-detect API URL based on environment
 const getApiBaseURL = () => {
-  // If explicitly set in environment, use that
   if (process.env.REACT_APP_API_URL) {
     return process.env.REACT_APP_API_URL;
   }
   
-  // If running on mobile/remote device (not localhost), use the host's IP
   const hostname = window.location.hostname;
   if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
-    // Extract the IP address from the current URL and use port 5000 for backend
     return `http://${hostname}:5000/api`;
   }
   
-  // Default to localhost for local development
   return 'http://localhost:5000/api';
 };
 
 const apiBaseURL = getApiBaseURL();
-console.log('API Base URL:', apiBaseURL); // Debug: shows which URL is being used
+console.log('API Base URL:', apiBaseURL); 
 
 const api = axios.create({
   baseURL: apiBaseURL,
@@ -28,7 +23,6 @@ const api = axios.create({
   }
 });
 
-// Request interceptor
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -42,7 +36,6 @@ api.interceptors.request.use(
   }
 );
 
-// Response interceptor
 api.interceptors.response.use(
   (response) => response,
   (error) => {
