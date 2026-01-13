@@ -57,7 +57,7 @@ JWT_EXPIRE=7d
 NODE_ENV=development
 
 ## Live Demo
-Frontend: https://task-management-app-aryan.netlify.app/
-Backend: https://task-management-backend-3j96.onrender.com
+- Frontend: https://task-management-app-aryan.netlify.app/
+- Backend: https://task-management-backend-3j96.onrender.com
 
 
