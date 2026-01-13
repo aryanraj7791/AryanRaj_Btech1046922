@@ -35,7 +35,7 @@ const Dashboard = () => {
   const handleCreateTask = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post('/tasks', formData);
+      await api.post('/tasks', formData);
       toast.success('Task created successfully!');
       setShowModal(false);
       setFormData({
@@ -59,7 +59,7 @@ const Dashboard = () => {
     } catch (error) {
       console.error('Error updating task:', error);
       toast.error('Failed to update task status');
-      fetchTasks(); 
+      fetchTasks(); // Refresh to revert UI
     }
   };
 
