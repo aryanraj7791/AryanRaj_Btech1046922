@@ -7,22 +7,18 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/tasks', require('./routes/tasks'));
 
-// Health check route
 app.get('/api/health', (req, res) => {
   res.status(200).json({ message: 'Server is running' });
 });
 
-// Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500).json({
@@ -32,7 +28,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler
 app.use((req, res) => {
   res.status(404).json({
     success: false,
@@ -40,7 +35,6 @@ app.use((req, res) => {
   });
 });
 
-// Database connection
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/task_management', {
@@ -57,7 +51,7 @@ const connectDB = async () => {
 connectDB();
 
 const PORT = process.env.PORT || 5000;
-const HOST = process.env.HOST || '0.0.0.0'; // Listen on all network interfaces
+const HOST = process.env.HOST || '0.0.0.0'; 
 
 app.listen(PORT, HOST, () => {
   console.log(`Server running on http://${HOST === '0.0.0.0' ? 'localhost' : HOST}:${PORT}`);
