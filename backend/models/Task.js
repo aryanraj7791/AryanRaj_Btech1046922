@@ -39,7 +39,6 @@ const taskSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Index for efficient queries
 taskSchema.index({ user: 1, status: 1 });
 
 module.exports = mongoose.model('Task', taskSchema);
