@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDrag } from 'react-dnd';
 import { format } from 'date-fns';
 
 const TaskCard = ({ task, onDelete }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [{ isDragging }, drag] = useDrag({
     type: 'task',
     item: { id: task._id, status: task.status },
@@ -37,9 +38,22 @@ const TaskCard = ({ task, onDelete }) => {
           ×
         </button>
       </div>
-      <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-        {task.description}
-      </p>
+      <div className="mb-3">
+        <p className={`text-gray-600 text-sm break-words ${isExpanded ? '' : 'line-clamp-3'}`}>
+          {task.description}
+        </p>
+        {task.description && task.description.length > 100 && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsExpanded(!isExpanded);
+            }}
+            className="text-blue-600 hover:text-blue-800 text-xs mt-1"
+          >
+            {isExpanded ? 'Show less' : 'Show more'}
+          </button>
+        )}
+      </div>
       <div className="mt-2 flex flex-col space-y-1 text-xs text-gray-500">
         <span>Due: {formatDate(task.due_date)}</span>
         <span>Created: {formatDate(task.created_at || task.createdAt)}</span>
