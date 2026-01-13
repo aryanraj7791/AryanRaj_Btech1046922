@@ -15,6 +15,15 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/tasks', require('./routes/tasks'));
 
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://your-frontend-name.netlify.app"
+  ],
+  credentials: true
+}));
+
+
 app.get('/api/health', (req, res) => {
   res.status(200).json({ message: 'Server is running' });
 });
