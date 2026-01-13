@@ -59,7 +59,7 @@ const Dashboard = () => {
     } catch (error) {
       console.error('Error updating task:', error);
       toast.error('Failed to update task status');
-      fetchTasks(); // Refresh to revert UI
+      fetchTasks(); 
     }
   };
 
