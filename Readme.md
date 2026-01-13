@@ -37,14 +37,14 @@ Users can sign up, log in, and manage their own tasks using a clean and responsi
 ---
 
 ## Backend Setup Instructions
-cd backend
-npm install
-npm run dev
+- cd backend
+- npm install
+- npm run dev
 
 ## Frontend Setup Instructions
-cd frontend
-npm install
-npm start
+- cd frontend
+- npm install
+- npm start
 
 ## Frontend Environment Variables (.env)
 REACT_APP_API_URL=http://localhost:5000/api
