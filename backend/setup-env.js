@@ -5,16 +5,13 @@ const crypto = require('crypto');
 const envPath = path.join(__dirname, '.env');
 const envExamplePath = path.join(__dirname, '.env.example');
 
-// Read existing .env if it exists
 let envContent = '';
 if (fs.existsSync(envPath)) {
   envContent = fs.readFileSync(envPath, 'utf8');
 }
 
-// Generate a secure JWT secret
 const jwtSecret = crypto.randomBytes(64).toString('hex');
 
-// Default environment variables
 const defaultEnv = {
   PORT: '5000',
   MONGODB_URI: 'mongodb://localhost:27017/task_management',
@@ -23,7 +20,6 @@ const defaultEnv = {
   NODE_ENV: 'development'
 };
 
-// Parse existing .env content
 const existingVars = {};
 if (envContent) {
   envContent.split('\n').forEach(line => {
@@ -37,15 +33,12 @@ if (envContent) {
   });
 }
 
-// Merge with defaults (existing values take precedence)
 const finalEnv = { ...defaultEnv, ...existingVars };
 
-// Ensure JWT_SECRET is set (use existing or generate new)
 if (!finalEnv.JWT_SECRET || finalEnv.JWT_SECRET === 'your_super_secret_jwt_key_change_this_in_production') {
   finalEnv.JWT_SECRET = jwtSecret;
 }
 
-// Write .env file
 let envFileContent = '# Environment Variables\n';
 envFileContent += '# DO NOT COMMIT THIS FILE TO VERSION CONTROL\n\n';
 
@@ -64,7 +57,6 @@ Object.entries(finalEnv).forEach(([key, value]) => {
   }
 });
 
-// Also create/update .env.example
 const exampleEnv = {
   PORT: '5000',
   MONGODB_URI: 'mongodb://localhost:27017/task_management',
