@@ -18,7 +18,7 @@ app.use('/api/tasks', require('./routes/tasks'));
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://your-frontend-name.netlify.app"
+    "https://task-management-app-aryan.netlify.app/"
   ],
   credentials: true
 }));
