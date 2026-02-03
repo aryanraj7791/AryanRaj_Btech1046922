@@ -52,8 +52,8 @@ REACT_APP_API_URL=http://localhost:5000/api
 ## Backend Environment Variables (.env)
 PORT=5000<br>
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/task_management?retryWrites=true&w=majority<br>
-JWT_SECRET=my_jwt_secret
-JWT_EXPIRE=7d
+JWT_SECRET=my_jwt_secret<br>
+JWT_EXPIRE=7d<br>
 NODE_ENV=development
 
 ## Live Demo
