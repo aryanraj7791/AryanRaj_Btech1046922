@@ -50,8 +50,8 @@ Users can sign up, log in, and manage their own tasks using a clean and responsi
 REACT_APP_API_URL=http://localhost:5000/api
 
 ## Backend Environment Variables (.env)
-PORT=5000
-MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/task_management?retryWrites=true&w=majority
+PORT=5000<br>
+MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/task_management?retryWrites=true&w=majority<br>
 JWT_SECRET=my_jwt_secret
 JWT_EXPIRE=7d
 NODE_ENV=development
